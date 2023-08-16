@@ -1,7 +1,7 @@
 console.log('***** Music Collection *****')
 
 let collection = []
-function addToCollection('title', 'artist', 'yearPublished') {
+function addToCollection(title, artist, yearPublished) {
     let album = {
         title: title,
         artist: artist,
@@ -10,3 +10,5 @@ function addToCollection('title', 'artist', 'yearPublished') {
     collection.push (album);
     return album;
 }// end of addToCollection
+
+addToCollection('Hybrid Theory', 'Linkin Park', 2000 );

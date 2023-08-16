@@ -20,6 +20,14 @@ addToCollection('Ember', 'Breaking Benjamin', 2018 );
 addToCollection('The Stories We Tell Ourselves', 'Nothing More', 2017 );
 addToCollection('The Sickness', 'Disturbed', 2000 );
 
-function showCollection() {
-    
+function showCollection(collection) {
+    console.log(`I have ${collection.length} albums in my collection:`);
+
+    for (let album of collection) {
+        console.log(`Title: ${album.title}`);
+        console.log(`Artist: ${album.artist}`);
+        console.log(`Year Published: ${album.yearPublished}`);
+        console.log(` `); // adding for better readability
+    } //end of let of
 }// end of showCollection
+showCollection(collection);

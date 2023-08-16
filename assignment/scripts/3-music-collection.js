@@ -21,7 +21,7 @@ addToCollection('The Stories We Tell Ourselves', 'Nothing More', 2017 );
 addToCollection('The Sickness', 'Disturbed', 2000 );
 
 function showCollection(collection) {
-    console.log(`I have ${collection.length} albums in my collection:`);
+    console.log(`I have ${collection.length} album(s) in my collection:`);
 
     for (let album of collection) {
         console.log(`Title: ${album.title}`);
@@ -31,3 +31,26 @@ function showCollection(collection) {
     } //end of let of
 }// end of showCollection
 showCollection(collection);
+
+function findByArtist(artist, collectionArray) {
+    let results = [];
+
+    for (let album of collectionArray){
+        if (album.artist === artist){
+            results.push(album);
+        }//end of results push
+    } //end of for loop
+    return results;
+} // end of findByArtist
+
+let searchResults = findByArtist('Linkin Park', collection);
+
+if (searchResults.length > 0) {
+    console.log("Yes, I have that artist in my collection");
+    showCollection(searchResults); 
+} // end of if 
+else {
+    console.log("No, that artist is not in my collection");
+} // end of else
+console.log(findByArtist(`Linkin Park`, collection));
+console.log(findByArtist(`Madonna`, collection));

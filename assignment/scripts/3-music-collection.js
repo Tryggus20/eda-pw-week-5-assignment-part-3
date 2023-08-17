@@ -43,15 +43,20 @@ function findByArtist(artist) {
     const results = [];
 
     for (const album of collection) {
+        if (results === 0){
+            return `No, ${artist} is not in my collection.`
+        }
         if (album.artist === artist) {
             results.push(album);
             console.log(`Yes, ${artist} is in my collection ${results.length} time(s).`);
-            return results;
-        } // end of if
+        } // end of if 
     }//end of for
         console.log(`No, ${artist} is not in my collection.`);
-        return []
+        return results
 } //end of search2
 
 console.log(findByArtist(`Linkin Park`));
 console.log(findByArtist(`Madonna`));
+
+
+// search3

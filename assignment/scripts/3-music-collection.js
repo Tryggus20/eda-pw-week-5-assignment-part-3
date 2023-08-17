@@ -20,6 +20,7 @@ addToCollection('Ember', 'Breaking Benjamin', 2018 );
 addToCollection('The Stories We Tell Ourselves', 'Nothing More', 2017 );
 addToCollection('The Sickness', 'Disturbed', 2000 );
 
+// adding a function to display the collection nicely
 function showCollection(collection) {
     console.log(`I have ${collection.length} album(s) in my collection:`);
 
@@ -32,25 +33,18 @@ function showCollection(collection) {
 }// end of showCollection
 showCollection(collection);
 
-function findByArtist(artist, collectionArray) {
-    let results = [];
+// 2nd attempt at search function:
 
-    for (let album of collectionArray){
-        if (album.artist === artist){
+function findByArtists(artist) {
+    const results = [];
+
+    for (const album of collection) {
+        if (album.artist === artist) {
             results.push(album);
-        }//end of results push
-    } //end of for loop
-    return results;
-} // end of findByArtist
-
-let searchResults = findByArtist('Linkin Park', collection);
-
-if (searchResults.length > 0) {
-    console.log("Yes, I have that artist in my collection");
-    showCollection(searchResults); 
-} // end of if 
-else {
-    console.log("No, that artist is not in my collection");
-} // end of else
-console.log(findByArtist(`Linkin Park`, collection));
-console.log(findByArtist(`Madonna`, collection));
+            console.log(`Yes, ${artist} is in my collection ${artist.length} time(s). ${collection} `);
+            return true
+        } // end of for
+    }//end of if
+        console.log(`No, ${artist} is not in my collection.`);
+        return false
+} //end of search2

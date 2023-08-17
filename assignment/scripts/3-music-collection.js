@@ -44,19 +44,17 @@ function findByArtist(artist) {
 
     for (const album of collection) {
         if (results === 0){
+            console.log('please work')
             return `No, ${artist} is not in my collection.`
         }
         if (album.artist === artist) {
             results.push(album);
-            console.log(`Yes, ${artist} is in my collection ${results.length} time(s).`);
         } // end of if 
     }//end of for
-        console.log(`No, ${artist} is not in my collection.`);
+        console.log(`${artist} is in my collection ${results.length} time(s)`);
         return results
-} //end of search2
+} //end of search attempt 2
+// still not liking the code... it is just ignoring the 'no' part now
 
 console.log(findByArtist(`Linkin Park`));
 console.log(findByArtist(`Madonna`));
-
-
-// search3

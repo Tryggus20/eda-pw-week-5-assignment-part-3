@@ -15,6 +15,7 @@ function addToCollection(title, artist, yearPublished, tracks) {
     return album;
 }// end of addToCollection
 
+//adding tracks for stretch goals
 let tracks1 = [
     {name: `Get Your Stretch On! (TedX Fargo Remix)`, duration: `5:55`},
     {name: `2nd Place 'Stache Victory March`, duration: `3:00`},
@@ -64,13 +65,13 @@ function findByArtist(artist) {
         if (album.artist === artist) {
             results.push(album);
         } // end of if 
-    }//end of for
+    }//end of for loop
     if (results.length === 0){
         return `No, ${artist} is not in my collection.`;
-    }// end of 2nd of for
+    }// end of if for no matches
         console.log(`${artist} is in my collection ${results.length} time(s)`);
         return results;
-} //end of search attempt 2
+} //end of search attempt 2 function
 
 console.log(findByArtist(`Linkin Park`));
 console.log(findByArtist(`Madonna`));
@@ -79,17 +80,13 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
 //extra stretch trying to get trackName search
-// Still trying to get just trackName search to work.
-function search(artist = null, year = null, trackName) {
+function search(artist = null, year = null, trackName = null) {
     const results = [];
     for (const album of collection) {
         // Am I making this way more complicated than it has to be for the track search?
-        if((album.artist === artist || artist === null) && 
-           (album.year === year || year === null) && 
-           (trackName === null || album.tracks.some(track => track.name === trackName)) ){
-            console.log(`Yes, I have the song ${trackName}.`)
+        if (album.tracks.some(track => track.name ===artist)){
             results.push(album);
-        }// one heck of an if statement to add a track. does not seem to work.
+        }// I feel like this is slightly cheating but it kinda works!
         if (album.artist === artist && album.yearPublished === year)
         results.push(album);
     } // end of if
@@ -98,9 +95,11 @@ function search(artist = null, year = null, trackName) {
         return collection
     } // end of null if
     if (results.length === 0) {
+        if(trackName !== null ) {
+            return `No albums with ${trackName} are in my collection.`
+        }
         return `No, I do not have an album from ${artist} with a year of ${year}.`
     } // end of no matches if
-    
     console.log(`Yes, there was a match for ${artist} and ${year}:`)
     return results
 }// end of for
@@ -118,5 +117,44 @@ console.log(search('Breaking Benjamin', 2018));
 // test for the track search. can't seem to quite get it.
 console.log(`--------------------`);
 console.log(`Track Search tests:`);
-console.log(search(``, ``,`Papercut`));
+console.log(search(`Papercut`)); // it works!! shows up a tad janky but it finally works!!!
 console.log(search(`Linkin Park`, 2000,`Papercut`));
+console.log(search(`Linkin Park`, 2000,`In the End`)); // code is saying yes when no is expected.
+
+
+// need to dos: 
+// get a "no" response when the track is not found using above code
+// 
+
+
+
+//I decided to completely re-write the code from scratch because 
+//I felt like the prev attempt was just too interwoven.
+function searches(artist = null, year = null, trackName = null) {
+    const results = [];
+    for (const album of collection) {
+        if ((artist === null || album.artist === artist) &&
+            (year === null || album.yearPublished === year) &&
+            (trackName === null || album.tracks.some(track => track.name === trackName))) {
+            results.push(album);
+        }// end of if statement
+    }// end of monsterous for 
+    if (results.length === 0) {
+        if (trackName !== null) {
+            return `No albums with track: ${trackName}`;
+        }// end of if for trackName not found
+        return `No matching albums found for ${artist} and the year ${year}`;
+    }//end of if for no matching artist and year
+    if (artist === null && year === null) {
+        console.log(`My collection is:`)
+        return collection
+    }// end of if statement if the function is blank
+    console.log(`Yes, there was a match for ${artist} and ${year}:`)
+
+    return results;
+} // end of one beefy search function named "searches" that actually works.
+console.log(searches(`Linkin Park`, 2000,`In the End`)); 
+console.log(searches(`Linkin Park`, 2000,`Papercut`)); 
+console.log(searches(`Ray Charles`, 1957));
+console.log(searches()); //fixed so it shows correctly 
+console.log(searches(`Papercut`)); // shows up a tad janky but it works!!!

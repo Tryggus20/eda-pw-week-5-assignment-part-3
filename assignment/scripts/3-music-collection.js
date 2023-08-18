@@ -20,12 +20,15 @@ let tracks1 = [
 ]
  
 let tracks2 = [    
-    {name: ``, duration: ``},
+    {name: `Papercut`, duration: `3:04`},
+    {name: `One Step Closer`, duration: `2:35`},
+    {name: `With You`, duration: `3:23`},
+
 ]
 //adding albums:
 addToCollection("Blaine's Greatest Hits", 'Blaine Booher', 2023, tracks1 );
 
-addToCollection('Hybrid Theory', 'Linkin Park', 2000 );
+addToCollection('Hybrid Theory', 'Linkin Park', 2000, tracks2 );
 addToCollection(`That's the Spirit`, 'Bring Me the Horizon', 2015 );
 addToCollection('Ember', 'Breaking Benjamin', 2018 );
 addToCollection('The Stories We Tell Ourselves', 'Nothing More', 2017 );

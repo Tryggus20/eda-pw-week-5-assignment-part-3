@@ -78,9 +78,16 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
-function search(artist = null, year = null, tracks) {
+function search(artist = null, year = null, trackName) {
     const results = [];
     for (const album of collection) {
+        // Am I making this way more complicated than it has to be for the track search?
+        if( (album.artist === artist || artist === null) && 
+          (album.year === year || year === null) && 
+          (trackName === null || album.tracks.some(track => track.name === trackName)) ){
+            console.log(`Yes, I have the song ${trackName}.`)
+            results.push(album);
+        }// one heck of an if statement to add a track. does not seem to work.
         if (album.artist === artist && album.yearPublished === year)
         results.push(album);
     } // end of if
@@ -105,3 +112,7 @@ console.log(search(`Ray Charles`, 1957));
 console.log(search());
 
 console.log(search('Breaking Benjamin', 2018));
+
+// test for the track search. can't seem to quite get it.
+console.log(search(``, ``,`Papercut`));
+console.log(search(`Linkin Park`, 2000,`Papercut`));

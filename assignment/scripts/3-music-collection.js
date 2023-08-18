@@ -156,6 +156,8 @@ function searches(artist = null, year = null, trackName = null) {
 
     return results;
 } // end of one beefy search function named "searches" that actually works.
+console.log(`--------------------`);
+console.log(`Track Searches tests:`);
 console.log(searches(`Linkin Park`, 2000,`In the End`)); 
 console.log(searches(`Linkin Park`, 2000,`Papercut`)); 
 console.log(searches(`Ray Charles`, 1957));

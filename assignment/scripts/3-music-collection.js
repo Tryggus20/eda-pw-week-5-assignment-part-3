@@ -57,3 +57,22 @@ function findByArtist(artist) {
 console.log(findByArtist(`Linkin Park`));
 console.log(findByArtist(`Madonna`));
 console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His beats are SICK!`); 
+
+//Stretch Goal:
+//Adding a function to search not just the artist, but also the year the album came out
+function search(artist, year) {
+    const results = [];
+    for (const album of collection) {
+        if (album.artist === artist && album.yearPublished === year)
+        results.push(album);
+    } // end of if
+    if (results.length === 0) {
+        return `No, that is not in my collection.`
+    } // end of if2
+    console.log(`Yes, there was a match for ${artist} and ${year}:`)
+    return results
+}// end of for
+console.log(search(`Linkin Park`, 2000));
+// adding another album with the same year and artst to test 
+addToCollection("Blaine's Greatest Hits 2", 'Blaine Booher', 2023 );
+console.log(search(`Blaine Booher`, 2023));

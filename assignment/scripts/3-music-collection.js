@@ -137,8 +137,8 @@ function searches(artist = null, year = null, trackName = null) {
             (year === null || album.yearPublished === year) &&
             (trackName === null || album.tracks.some(track => track.name === trackName))) {
             results.push(album);
-        }// end of if statement
-    }// end of monsterous for 
+        }// end of crazy if statement
+    }// end of for loop 
     if (results.length === 0) {
         if (trackName !== null) {
             return `No albums with track: ${trackName}`;

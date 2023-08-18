@@ -79,8 +79,9 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
-//extra stretch trying to get trackName search
-function search(artist = null, year = null, trackName = null) {
+//extra stretch trying to get trackName search 
+// SEE BELOW FOR CORRECT CODE - commented out because it was not working quite right.
+/* function search(artist = null, year = null, trackName = null) {
     const results = [];
     for (const album of collection) {
         // Am I making this way more complicated than it has to be for the track search?
@@ -125,7 +126,7 @@ console.log(search(`Linkin Park`, 2000,`In the End`)); // code is saying yes whe
 // need to dos: 
 // get a "no" response when the track is not found using above code
 // 
-
+*/
 
 
 //I decided to completely re-write the code from scratch because 
@@ -161,3 +162,5 @@ console.log(searches(`Ray Charles`, 1957));
 console.log(searches()); //fixed so it shows correctly 
 console.log(searches(`Papercut`)); // shows up a tad janky but it works!!!
 console.log(searches(`Ray Charles`));
+console.log(searches(`Blaine Booher`, 2023, `2nd Place 'Stache Victory March` )); 
+// good it does not show the 2nd album that does not have that song in it!

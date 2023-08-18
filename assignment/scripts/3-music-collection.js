@@ -135,7 +135,9 @@ function searches(artist = null, year = null, trackName = null) {
     for (const album of collection) {
         if ((artist === null || album.artist === artist) &&
             (year === null || album.yearPublished === year) &&
-            (trackName === null || album.tracks.some(track => track.name === trackName))) {
+            (trackName === null || album.tracks.some(track => track.name === trackName)) ||
+            (album.tracks.some(track => track.name === artist)) )
+            {
             results.push(album);
         }// end of crazy if statement
     }// end of for loop 
@@ -158,3 +160,4 @@ console.log(searches(`Linkin Park`, 2000,`Papercut`));
 console.log(searches(`Ray Charles`, 1957));
 console.log(searches()); //fixed so it shows correctly 
 console.log(searches(`Papercut`)); // shows up a tad janky but it works!!!
+console.log(searches(`Ray Charles`));

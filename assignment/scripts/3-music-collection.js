@@ -60,19 +60,28 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
-function search(artist, year) {
+function search(artist = null, year = null) {
     const results = [];
     for (const album of collection) {
         if (album.artist === artist && album.yearPublished === year)
         results.push(album);
     } // end of if
+    if (artist === null && year === null) {
+        console.log(`My collection is:`)
+        return collection
+    } // end of null if
     if (results.length === 0) {
-        return `No, that is not in my collection.`
-    } // end of if2
+        return `No, I do not have an album from ${artist} with a year of ${year}.`
+    } // end of no matches if
+    
     console.log(`Yes, there was a match for ${artist} and ${year}:`)
     return results
 }// end of for
 console.log(search(`Linkin Park`, 2000));
+console.log(search(`Linkin Park`, 2001));
+
 // adding another album with the same year and artst to test 
 addToCollection("Blaine's Greatest Hits 2", 'Blaine Booher', 2023 );
 console.log(search(`Blaine Booher`, 2023));
+console.log(search(`Ray Charles`, 1957));
+console.log(search());

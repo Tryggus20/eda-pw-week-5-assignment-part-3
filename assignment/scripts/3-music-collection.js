@@ -56,18 +56,4 @@ function findByArtist(artist) {
 
 console.log(findByArtist(`Linkin Park`));
 console.log(findByArtist(`Madonna`));
-
-//search attempt 3
-function findByArtists(artist) {
-    console.log(artist.length);
-    const results = [];
-    for ( let i = 0; i< artist.length; i++) {
-        for (const album of collection){
-            if (album.artist === artist) {
-            results.push(album);
-            }// end of if
-        }  //end of 2nd for
-    }//end of 1st for
-    return results
-}// end of findByArtists
-//comes back with a length of 22 for Linkin Park still. each album repeated 11 times
+console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His beats are SICK!`); 

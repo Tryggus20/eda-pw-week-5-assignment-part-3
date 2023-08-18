@@ -1,13 +1,14 @@
 console.log('***** Music Collection *****')
 
 let collection = []
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, tracks) {
     console.log('in addToCollection function');
     let album = {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        tracks: tracks // Added for stretch goals
+        tracks: tracks || [], // Added for stretch goals
+        // trying to see if || will fix my track issue
 
     }; //end to album object
     collection.push (album);
@@ -15,7 +16,7 @@ function addToCollection(title, artist, yearPublished) {
 }// end of addToCollection
 
 let tracks1 = [
-    {name: `Get Your Stretch On!`, duration: `5:55`},
+    {name: `Get Your Stretch On! (TedX Fargo Remix)`, duration: `5:55`},
     {name: `2nd Place 'Sache Victory March`, duration: `3:00`},
 ]
  
@@ -39,21 +40,25 @@ addToCollection(`Meteora`, `Linkin Park`, 2003 )
 // adding a function to display the collection nicely
 function showCollection(collection) {
     console.log('in showCollection function');
+    console.log(''); //Added spacing for readability
     console.log(`I have ${collection.length} album(s) in my collection:`);
 
     for (let album of collection) {
         console.log(`Title: ${album.title}`);
         console.log(`Artist: ${album.artist}`);
         console.log(`Year Published: ${album.yearPublished}`);
+        console.log(`Tracks:`);
+        for (let track of album.tracks) {
+            console.log( `Name: ${track.name}, Duration: ${track.duration}`);
+        } //end of for album tracks
         console.log(` `); // adding for better readability
-    } //end of let of
+    } //end of for loop
 }// end of showCollection
 showCollection(collection);
 
 // 2nd attempt at search function:
 
 function findByArtist(artist) {
-    console.log('in findByArtist function');
     const results = [];
     for (const album of collection) {  
         if (album.artist === artist) {
@@ -73,7 +78,7 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
-function search(artist = null, year = null) {
+function search(artist = null, year = null, tracks) {
     const results = [];
     for (const album of collection) {
         if (album.artist === artist && album.yearPublished === year)
@@ -99,3 +104,4 @@ console.log(search(`Blaine Booher`, 2023));
 console.log(search(`Ray Charles`, 1957));
 console.log(search());
 
+console.log(search('Breaking Benjamin', 2018));

@@ -7,13 +7,23 @@ function addToCollection(title, artist, yearPublished) {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
+        tracks: tracks // Added for stretch goals
+
     }; //end to album object
     collection.push (album);
     return album;
 }// end of addToCollection
 
+let tracks1 = [
+    {name: `Get Your Stretch On!`, duration: `5:55`},
+    {name: `2nd Place 'Sache Victory March`, duration: `3:00`},
+]
+ 
+let tracks2 = [    
+    {name: ``, duration: ``},
+]
 //adding albums:
-addToCollection("Blaine's Greatest Hits", 'Blaine Booher', 2023 );
+addToCollection("Blaine's Greatest Hits", 'Blaine Booher', 2023, tracks1 );
 
 addToCollection('Hybrid Theory', 'Linkin Park', 2000 );
 addToCollection(`That's the Spirit`, 'Bring Me the Horizon', 2015 );
@@ -85,3 +95,4 @@ addToCollection("Blaine's Greatest Hits 2", 'Blaine Booher', 2023 );
 console.log(search(`Blaine Booher`, 2023));
 console.log(search(`Ray Charles`, 1957));
 console.log(search());
+

@@ -1,5 +1,6 @@
 console.log('***** Music Collection *****')
-
+// let's start a collection of albums with a title, artist, and year
+// adding tracks to the collection
 let collection = []
 function addToCollection(title, artist, yearPublished, tracks) {
     console.log('in addToCollection function');
@@ -9,7 +10,6 @@ function addToCollection(title, artist, yearPublished, tracks) {
         yearPublished: yearPublished,
         tracks: tracks || [], // Added for stretch goals
         // trying to see if || will fix my track issue
-
     }; //end to album object
     collection.push (album);
     return album;
@@ -17,18 +17,16 @@ function addToCollection(title, artist, yearPublished, tracks) {
 
 let tracks1 = [
     {name: `Get Your Stretch On! (TedX Fargo Remix)`, duration: `5:55`},
-    {name: `2nd Place 'Sache Victory March`, duration: `3:00`},
-]
- 
+    {name: `2nd Place 'Stache Victory March`, duration: `3:00`},
+]//end of tracks1
 let tracks2 = [    
     {name: `Papercut`, duration: `3:04`},
     {name: `One Step Closer`, duration: `2:35`},
     {name: `With You`, duration: `3:23`},
+]//end of tracks2
 
-]
 //adding albums:
 addToCollection("Blaine's Greatest Hits", 'Blaine Booher', 2023, tracks1 );
-
 addToCollection('Hybrid Theory', 'Linkin Park', 2000, tracks2 );
 addToCollection(`That's the Spirit`, 'Bring Me the Horizon', 2015 );
 addToCollection('Ember', 'Breaking Benjamin', 2018 );
@@ -36,13 +34,15 @@ addToCollection('The Stories We Tell Ourselves', 'Nothing More', 2017 );
 addToCollection('The Sickness', 'Disturbed', 2000 );
 //adding another Linkin Park album to test
 addToCollection(`Meteora`, `Linkin Park`, 2003 )
+// adding another album with the same year and artst to test 
+addToCollection("Blaine's Greatest Hits 2", 'Blaine Booher', 2023 );
+
 
 // adding a function to display the collection nicely
 function showCollection(collection) {
     console.log('in showCollection function');
     console.log(''); //Added spacing for readability
     console.log(`I have ${collection.length} album(s) in my collection:`);
-
     for (let album of collection) {
         console.log(`Title: ${album.title}`);
         console.log(`Artist: ${album.artist}`);
@@ -78,13 +78,15 @@ console.log(`My favorite may have to be`, findByArtist(`Blaine Booher`),` His be
 
 //Stretch Goal:
 //Adding a function to search not just the artist, but also the year the album came out
+//extra stretch trying to get trackName search
+// Still trying to get just trackName search to work.
 function search(artist = null, year = null, trackName) {
     const results = [];
     for (const album of collection) {
         // Am I making this way more complicated than it has to be for the track search?
-        if( (album.artist === artist || artist === null) && 
-          (album.year === year || year === null) && 
-          (trackName === null || album.tracks.some(track => track.name === trackName)) ){
+        if((album.artist === artist || artist === null) && 
+           (album.year === year || year === null) && 
+           (trackName === null || album.tracks.some(track => track.name === trackName)) ){
             console.log(`Yes, I have the song ${trackName}.`)
             results.push(album);
         }// one heck of an if statement to add a track. does not seem to work.
@@ -102,11 +104,11 @@ function search(artist = null, year = null, trackName) {
     console.log(`Yes, there was a match for ${artist} and ${year}:`)
     return results
 }// end of for
+console.log(`---------------------`);
+console.log(`Search functions tests:`);
 console.log(search(`Linkin Park`, 2000));
 console.log(search(`Linkin Park`, 2001));
 
-// adding another album with the same year and artst to test 
-addToCollection("Blaine's Greatest Hits 2", 'Blaine Booher', 2023 );
 console.log(search(`Blaine Booher`, 2023));
 console.log(search(`Ray Charles`, 1957));
 console.log(search());
@@ -114,5 +116,7 @@ console.log(search());
 console.log(search('Breaking Benjamin', 2018));
 
 // test for the track search. can't seem to quite get it.
+console.log(`--------------------`);
+console.log(`Track Search tests:`);
 console.log(search(``, ``,`Papercut`));
 console.log(search(`Linkin Park`, 2000,`Papercut`));
